@@ -66,6 +66,21 @@ def produit_matrice(matriceA, matriceB)
     return matrice
 end
 
+def addition_matrice(matriceA, matriceB)
+    # initialisation de la matrice résultat
+    matrice = Array.new(matriceA.length) {Array.new(matriceB[0].length, 0)}
+    lignes = matrice.length
+    col = matrice[0].length
+
+    for i in 0..lignes-1 do 
+        for ii in 0..col-1 do            
+            matrice[i][ii] = matriceA[i][ii]+matriceB[i][ii]
+        end
+    end
+    
+    return matrice
+end
+
 # PROGRAM START HERE !
 puts "ALGORITHME - OPERATIONS SUR LES MATRICES"
 puts ""
@@ -81,7 +96,15 @@ choix = gets.chomp.to_i # récupère le choix de l'utilisateur
 while true 
     case choix 
     when 1
-        puts "En développement..."
+        puts "\nCréation de la matrice A"
+        matriceA = creer_matrice()
+
+        puts "\nCréation de la matrice B"
+        matriceB = creer_matrice()
+        
+        matriceR = addition_matrice(matriceA, matriceB)
+        puts "\nRésultat MatriceA+MatriceB"
+        afficher_matrice(matriceR)
         break
     when 2
         puts "\nCréation de la matrice A"
@@ -102,7 +125,7 @@ while true
     end
 end 
 
-print "Appuyer sur une touche..."
+print "\nAppuyer sur une touche..."
 gets
 
 =begin
