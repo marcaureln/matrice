@@ -1,12 +1,3 @@
-# TO-DO : 
-# _ afficher correctement les matrices, gérer les décalages créés par les nbrs négatifs --DONE
-# _ remplacer les bloc par des methodes (pour plus de modularité) --DOING
-# _ construire une classe matrice et un module contenant toutes les opérations sur les matrices
-# _ gestion des erreurs (math_error, synthax_error, ...)
-# _ gérer les erreurs liées aux format des matrices (pour l'addition et le produit)
-# _ reconnaissance du type des matrices (carrée, diagonale, unitaire, ...)
-# _ refractoring, optimization
-
 def creer_matrice(lignes, col)
     
     # initialise un tableau de tableaux;
