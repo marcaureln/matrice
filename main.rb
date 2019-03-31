@@ -102,6 +102,9 @@ while true
     end
 end 
 
+print "Appuyer sur une touche..."
+gets
+
 =begin
 matriceA = 
 [   
