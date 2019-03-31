@@ -81,6 +81,20 @@ def addition_matrice(matriceA, matriceB)
     return matrice
 end
 
+def produit_reel(matriceA, a)
+    matrice = Array.new(matriceA.length) {Array.new(matriceB[0].length, 0)}
+    lignes = matrice.length
+    col = matrice[0].length
+
+    for i in 0..lignes-1 do 
+        for ii in 0..col-1 do            
+            matrice[i][ii] = matriceA[i][ii]*a
+        end
+    end
+    
+    return matrice
+end
+
 # PROGRAM START HERE !
 puts "ALGORITHME - OPERATIONS SUR LES MATRICES"
 puts ""
@@ -118,7 +132,15 @@ while true
         afficher_matrice(matriceR)
         break
     when 3
-        puts "En développement..."
+        puts "\nCréation de la matrice A"
+        matriceA = creer_matrice()
+
+        print "\nValeur de a : "
+        a = gets.chomp.to_i
+        
+        matriceR = produit_matrice(matriceA, matriceB)
+        puts "\nRésultat a*MatriceA"
+        afficher_matrice(matriceR)
         break
     else 
         puts "choix indisponible"
