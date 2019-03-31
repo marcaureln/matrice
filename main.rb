@@ -81,6 +81,7 @@ choix = gets.chomp.to_i # récupère le choix de l'utilisateur
 while true 
     case choix 
     when 1
+        puts "En développement..."
         break
     when 2
         puts "\nCréation de la matrice A"
@@ -94,6 +95,7 @@ while true
         afficher_matrice(matriceR)
         break
     when 3
+        puts "En développement..."
         break
     else 
         puts "choix indisponible"
