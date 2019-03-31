@@ -82,7 +82,7 @@ def addition_matrice(matriceA, matriceB)
 end
 
 def produit_reel(matriceA, a)
-    matrice = Array.new(matriceA.length) {Array.new(matriceB[0].length, 0)}
+    matrice = Array.new(matriceA.length) {Array.new(matriceA[0].length, 0)}
     lignes = matrice.length
     col = matrice[0].length
 
@@ -138,7 +138,7 @@ while true
         print "\nValeur de a : "
         a = gets.chomp.to_i
         
-        matriceR = produit_matrice(matriceA, matriceB)
+        matriceR = produit_reel(matriceA, a)
         puts "\nRésultat a*MatriceA"
         afficher_matrice(matriceR)
         break
