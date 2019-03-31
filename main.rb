@@ -1,5 +1,14 @@
-def creer_matrice(lignes, col)
-    
+def creer_matrice()    
+    print "Entrez les dimensions de votre matrice (lignes colonnes): "
+    saisie = gets.chomp # récupérer la saisie de l'utilisateur
+
+    dimension = saisie.split(" ") # sépare la chaine de caractère en élément du tableau dimension
+    dimension.map!{ |x| x.to_i } # converti les string du tableau en integer (entier)
+
+    lignes = dimension[0]; # récupère le nombre de lignes à l'index 0 du tableau dimension
+    col = dimension[1]; # récupère le nombre de colonnes à l'index 1 du tableau dimension
+    puts "Format de votre matrice : #{lignes} lignes et #{col} colonnes" # affiche le format de la matrice
+
     # initialise un tableau de tableaux;
     # le nbre d'elts du tableau parent correspond au nombre de ligne;
     # le nbre d'elts des tableaux enfants correspond au nombre de colonne;
@@ -38,32 +47,71 @@ def afficher_matrice(matrice)
     end
 end
 
+def produit_matrice(matriceA, matriceB)
+    # initialisation de la matrice résultat
+    matrice = Array.new(matriceA.length) {Array.new(matriceB[0].length, 0)}
+    lignes = matrice.length
+    col = matrice[0].length
+
+    for lignesA in 0..matriceA.length-1 do 
+        for colonneB in 0..matriceB[0].length-1 do
+            somme = 0
+            for i in 0..matriceA[0].length-1 do 
+                somme += matriceA[lignesA][i]*matriceB[i][colonneB]  
+            end
+            matrice[lignesA][colonneB] = somme
+        end
+    end
+    
+    return matrice
+end
+
 # PROGRAM START HERE !
-puts "Matrice"
+puts "ALGORITHME - OPERATIONS SUR LES MATRICES"
+puts ""
+puts "-------------- Menu -----------------"
+puts "1. Addition MatriceA+MatriceB"
+puts "2. Produit MatriceA*MatriceB"
+puts "3. Produit a*MatriceA"
+puts ""
+
+print "Veuillez faire un choix : "
+choix = gets.chomp.to_i # récupère le choix de l'utilisateur
+
+while true 
+    case choix 
+    when 1
+        break
+    when 2
+        puts "\nCréation de la matrice A"
+        matriceA = creer_matrice()
+
+        puts "\nCréation de la matrice B"
+        matriceB = creer_matrice()
+        
+        matriceR = produit_matrice(matriceA, matriceB)
+        puts "\nRésultat MatriceA*MatriceB"
+        afficher_matrice(matriceR)
+        break
+    when 3
+        break
+    else 
+        puts "choix indisponible"
+    end
+end 
 
 =begin
-print "Entrez les dimensions de votre matrice (lignes colonnes): "
-saisie = gets.chomp # récupérer la saisie de l'utilisateur
-
-dimension = saisie.split(" ") # sépare la chaine de caractère en élément du tableau dimension
-dimension.map!{ |x| x.to_i } # converti les string du tableau en integer (entier)
-
-lignes = dimension[0]; # récupère le nombre de lignes à l'index 0 du tableau dimension
-col = dimension[1]; # récupère le nombre de colonnes à l'index 1 du tableau dimension
-puts "Format de votre matrice : #{lignes} lignes et #{col} colonnes" # affiche le format de la matrice
-=end
-
 matriceA = 
-        [   
-            [2, 0, 1], # [0][0] [0][1] [0][2]
-            [-1, 1, 2] # [1][0] [1][1] [1][2]
-        ]
+[   
+    [2, 0, 1], # [0][0] [0][1] [0][2]
+    [-1, 1, 2] # [1][0] [1][1] [1][2]
+]
 matriceB = 
-        [
-            [0, 2, 1],    # [0][0] [0][1] [0][2]
-            [1, 1, 0],    # [1][0] [1][1] [1][2]
-            [-1, -2, -1]  # [2][0] [2][1] [2][2]
-        ]     
+[
+    [0, 2, 1],    # [0][0] [0][1] [0][2]
+    [1, 1, 0],    # [1][0] [1][1] [1][2]
+    [-1, -2, -1]  # [2][0] [2][1] [2][2]
+]     
 
 # matriceR : Résultat du produit
 # -1  2  1 # [0][0] [0][1] [0][2]
@@ -75,26 +123,10 @@ afficher_matrice(matriceA)
 puts "\nMatrice B"
 afficher_matrice(matriceB)
 
-def produit_matrice(matriceA, matriceB)
-    # initialisation de la matrice résultat
-    matrice = Array.new(matriceA.length) {Array.new(matriceB[0].length, 0)}
-    lignes = matrice.length
-    col = matrice[0].length
-
-    for lignesA in 0..matriceA.length-1 do 
-        for colonneB in 0..matriceB[0].length-1 do
-            somme = 0
-            for i in 0..col-1 do 
-                somme += matriceA[lignesA][i]*matriceB[i][colonneB]
-            end
-            matrice[lignesA][colonneB] = somme
-        end
-    end
-    
-    return matrice
-end
 
 matriceR = produit_matrice(matriceA, matriceB)
 
 puts "\nProduit A*B"
 afficher_matrice(matriceR)
+
+=end
