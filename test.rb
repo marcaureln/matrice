@@ -1,4 +1,9 @@
-require_relative 'main.rb'
+begin
+    load "main.rb"    
+rescue => exception
+    puts "Impossible de charger le fichier main.rb"
+    puts exception.message
+end
 
 # déclaration des matrices pour les tests
 
@@ -17,7 +22,7 @@ matriceC = [
     [2, 7, 3]
 ]
 
-matriceD [
+matriceD = [
     [5, -1, 6],
     [-2, 1, -3]
 ]
