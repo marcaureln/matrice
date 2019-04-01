@@ -44,13 +44,15 @@ afficher_matrice(matriceB)
 puts "\nProduit A*B"
 afficher_matrice(matriceP)
 
+puts "" # saut de ligne
+
 # -------------- ADDITION -------------------------------
 
 # matriceC+matriceD : Résultat de la somme
 # 6  3  4 # [0][0] [0][1] [0][2]
 # 0  8  0 # [1][0] [1][1] [1][2]
 
-matriceS = addition_matrice(matriceB, matriceC) # résultat de la somme
+matriceS = addition_matrice(matriceC, matriceD) # résultat de la somme
 
 puts "Matrice C"
 afficher_matrice(matriceC)
@@ -60,6 +62,8 @@ afficher_matrice(matriceD)
 
 puts "\nAddition C+D"
 afficher_matrice(matriceS)
+
+puts "" # saut de ligne
 
 # ---------------- MULTIPLICATION PAR UN REEL ------------
 
@@ -72,6 +76,8 @@ matriceR = addition_matrice(matriceC, matriceN)
 
 puts "\nDifférence C-D"
 afficher_matrice(matriceR)
+
+puts "" # saut de ligne
 
 # --------------- FIN DES TESTS -------------------------
 
