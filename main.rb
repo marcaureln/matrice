@@ -149,34 +149,3 @@ end
 
 print "\nAppuyer sur une touche..."
 gets
-
-=begin
-matriceA = 
-[   
-    [2, 0, 1], # [0][0] [0][1] [0][2]
-    [-1, 1, 2] # [1][0] [1][1] [1][2]
-]
-matriceB = 
-[
-    [0, 2, 1],    # [0][0] [0][1] [0][2]
-    [1, 1, 0],    # [1][0] [1][1] [1][2]
-    [-1, -2, -1]  # [2][0] [2][1] [2][2]
-]     
-
-# matriceR : Résultat du produit
-# -1  2  1 # [0][0] [0][1] [0][2]
-# -1 -5 -3 # [1][0] [1][1] [1][2]
-
-puts "Matrice A"
-afficher_matrice(matriceA)
-
-puts "\nMatrice B"
-afficher_matrice(matriceB)
-
-
-matriceR = produit_matrice(matriceA, matriceB)
-
-puts "\nProduit A*B"
-afficher_matrice(matriceR)
-
-=end
