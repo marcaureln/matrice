@@ -95,6 +95,16 @@ def produit_reel(matriceA, a)
     return matrice
 end
 
+def test_produit(matriceA, matriceB) 
+    colA = matriceA.length
+    lignesB = matriceB.length
+    if colA == lignesB
+        return true
+    else
+        return false
+    end
+end
+
 # PROGRAM START HERE !
 puts "ALGORITHME - OPERATIONS SUR LES MATRICES"
 puts ""
@@ -127,9 +137,13 @@ while true
         puts "\nCréation de la matrice B"
         matriceB = creer_matrice()
         
-        matriceR = produit_matrice(matriceA, matriceB)
-        puts "\nRésultat MatriceA*MatriceB"
-        afficher_matrice(matriceR)
+        if test_produit(matriceA, matriceB)
+            matriceR = produit_matrice(matriceA, matriceB)
+            puts "\nRésultat MatriceA*MatriceB"
+            afficher_matrice(matriceR)            
+        else
+            puts "Produit impossible - Matrices incompatibles"
+        end
         break
     when 3
         puts "\nCréation de la matrice A"
