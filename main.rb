@@ -105,6 +105,14 @@ def test_produit(matriceA, matriceB)
     end
 end
 
+def test_matrice_carree(matrice)
+    if matrice.length == matrice[0].length
+        return true
+    else
+        return false
+    end
+end
+
 # PROGRAM START HERE !
 puts "ALGORITHME - OPERATIONS SUR LES MATRICES"
 puts ""
