@@ -96,7 +96,7 @@ def produit_reel(matriceA, a)
 end
 
 def test_produit(matriceA, matriceB) 
-    colA = matriceA.length
+    colA = matriceA[0].length
     lignesB = matriceB.length
     if colA == lignesB
         return true
@@ -108,6 +108,23 @@ end
 def test_matrice_carree(matrice)
     if matrice.length == matrice[0].length
         return true
+    else
+        return false
+    end
+end
+
+def test_addition(matriceA, matriceB)
+    if test_matrice_caree(matriceA) || test_matrice_caree(matriceB)
+        colA = matriceA[0].length
+        colB = matriceB[0].length
+        lignesA = matriceA.length
+        lignesB = matriceB.length
+
+        if colA == colB || lignesA == lignesB
+            return true
+        else
+            return false
+        end
     else
         return false
     end
@@ -133,10 +150,13 @@ while true
 
         puts "\nCréation de la matrice B"
         matriceB = creer_matrice()
-        
-        matriceR = addition_matrice(matriceA, matriceB)
-        puts "\nRésultat MatriceA+MatriceB"
-        afficher_matrice(matriceR)
+
+        if test_addition(matriceA, matriceB)
+            matriceR = addition_matrice(matriceA, matriceB)
+            puts "\nRésultat MatriceA+MatriceB"
+            afficher_matrice(matriceR)
+        else
+            puts "\nAddition impossible - Matrices incompatibles"
         break
     when 2
         puts "\nCréation de la matrice A"
@@ -150,7 +170,7 @@ while true
             puts "\nRésultat MatriceA*MatriceB"
             afficher_matrice(matriceR)            
         else
-            puts "Produit impossible - Matrices incompatibles"
+            puts "\nProduit impossible - Matrices incompatibles"
         end
         break
     when 3
