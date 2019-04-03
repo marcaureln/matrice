@@ -137,10 +137,11 @@ puts "-------------- Menu -----------------"
 puts "1. Addition MatriceA+MatriceB"
 puts "2. Produit MatriceA*MatriceB"
 puts "3. Produit a*MatriceA"
+puts "4. Quitter le programme"
 puts ""
 
 while true 
-    print "Veuillez faire un choix : " # contrairement au puts le print n'éffectue pas de saut de ligne
+    print "Veuillez faire un choix : " # contrairement au puts le print n'éffectue pas de saut de ligne avant ou après la chaine de caractère
     choix = gets.chomp.to_i # récupère le choix de l'utilisateur
 
     case choix 
@@ -185,8 +186,10 @@ while true
         puts "\nRésultat a*MatriceA"
         afficher_matrice(matriceR)
         break
+    when 4 # quand l'utilisateur décide de quitter le programme
+        break
     else 
-        puts "choix indisponible\n"
+        puts "choix indisponible\n\n"
     end
 end 
 
