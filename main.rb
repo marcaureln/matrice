@@ -1,5 +1,5 @@
 def creer_matrice()    
-    print "Entrez les dimensions de votre matrice (lignes colonnes): "
+    print "Entrez les dimensions de votre matrice (lignes colonnes): " # demande à l'utilisateur d'enter le format de la matrice
     saisie = gets.chomp # récupérer la saisie de l'utilisateur
 
     dimension = saisie.split(" ") # sépare la chaine de caractère en élément du tableau dimension
@@ -16,19 +16,19 @@ def creer_matrice()
     
     # V là ça devient chaud !!!    
     puts "Remplissez votre matrice : "
-    for a in 1..lignes do
-        print "Ligne #{a} : "
-        saisie = gets.chomp
-        ligne = saisie.split(" ")
-        ligne.map!{ |x| x.to_i } 
-        c = 0
-        for b in 0..col-1 do
-            matrice[a-1][b] = ligne[c]      
-            b+=1  
-            c+=1
+    for a in 1..lignes do # boucle qui part de 1 au nombre de lignes renseigné par l'utilisateur
+        print "Ligne #{a} : " # affiche le numéro de la ligne
+        saisie = gets.chomp # récupère la signe en chaine de caractère
+        ligne = saisie.split(" ") # divise la chaine de caractère en "substring" (sous-chaine) et retourne un tableau des différentes petites chaines
+        ligne.map!{ |x| x.to_i } # converti tous les éléments (string) du tableau en entier
+        c = 0 # représente l'index dans le tableau ligne = numero de la colonne
+        for b in 0..col-1 do # b = numero de colonne dans la matrice
+            matrice[a-1][b] = ligne[c] # a-1 car le tableau commence à l'index 0     
+            b+=1 # incrémante de 1 
+            c+=1 # idem
         end
     end
-    return matrice
+    return matrice # la fonction retourne la matrice (c'est un Array ou tableau)
 end
 
 def afficher_matrice(matrice)
@@ -36,11 +36,10 @@ def afficher_matrice(matrice)
     lignes = matrice.length # le nbre de lignes correspond au nombre d'elts du tableau parent
     col = matrice[0].length # le nbre de colonnes correspond au nombre d'elts d'un des tableaux enfants
 
-    # puts "Votre matrice : "
-    for a in 1..lignes do
-        for b in 0..col-1 do
-            nombre = matrice[a-1][b].to_i
-            print " " if nombre >= 0
+    for a in 1..lignes do # boucle qui affiche les lignes de la matrice
+        for b in 0..col-1 do # la boucle affiche une ligne de la matrice
+            nombre = matrice[a-1][b]
+            print " " if nombre >= 0 # pour résoudre le problème de décalage causé par les nombres négatifs
             print "#{nombre} "       
         end
         print "\n"
@@ -50,9 +49,11 @@ end
 def produit_matrice(matriceA, matriceB)
     # initialisation de la matrice résultat
     matrice = Array.new(matriceA.length) {Array.new(matriceB[0].length, 0)}
-    lignes = matrice.length
+    # stocker le nombre de lignes et de colonnes pour pouvoir les utiliser plus facilement
+    lignes = matrice.length 
     col = matrice[0].length
 
+    # V trop complexe à expliquer en commentaire
     for lignesA in 0..matriceA.length-1 do 
         for colonneB in 0..matriceB[0].length-1 do
             somme = 0
@@ -67,7 +68,6 @@ def produit_matrice(matriceA, matriceB)
 end
 
 def addition_matrice(matriceA, matriceB)
-    # initialisation de la matrice résultat
     matrice = Array.new(matriceA.length) {Array.new(matriceB[0].length, 0)}
     lignes = matrice.length
     col = matrice[0].length
@@ -99,7 +99,7 @@ def test_produit(matriceA, matriceB)
     colA = matriceA[0].length
     lignesB = matriceB.length
     if colA == lignesB
-        return true
+        return true 
     else
         return false
     end
@@ -120,7 +120,7 @@ def test_addition(matriceA, matriceB)
         lignesA = matriceA.length
         lignesB = matriceB.length
 
-        if colA == colB || lignesA == lignesB
+        if colA == colB and lignesA == lignesB
             return true
         else
             return false
@@ -152,30 +152,30 @@ while true
         puts "\nCréation de la matrice B"
         matriceB = creer_matrice()
 
-        if test_addition(matriceA, matriceB)
-            matriceR = addition_matrice(matriceA, matriceB)
+        if test_addition(matriceA, matriceB) # retourne vrai si les matrices sont compatibles
+            matriceR = addition_matrice(matriceA, matriceB) 
             puts "\nRésultat MatriceA+MatriceB"
             afficher_matrice(matriceR)
-        else
+        else # sinon on affiche que le calcul est impossible
             puts "\nAddition impossible - Matrices incompatibles"
         end
         break
-    when 2
+    when 2 # choix de la multiplication de matrices
         puts "\nCréation de la matrice A"
         matriceA = creer_matrice()
 
         puts "\nCréation de la matrice B"
         matriceB = creer_matrice()
         
-        if test_produit(matriceA, matriceB)
-            matriceR = produit_matrice(matriceA, matriceB)
+        if test_produit(matriceA, matriceB) # test dans un premier temps si la multiplication est possible
+            matriceR = produit_matrice(matriceA, matriceB) # si oui
             puts "\nRésultat MatriceA*MatriceB"
             afficher_matrice(matriceR)            
-        else
+        else # sinon on affiche que le calcul est impossible
             puts "\nProduit impossible - Matrices incompatibles"
         end
         break
-    when 3
+    when 3 # choix de la multiplication de matrice avec un réel
         puts "\nCréation de la matrice A"
         matriceA = creer_matrice()
 
