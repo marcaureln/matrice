@@ -114,7 +114,7 @@ def test_matrice_carree(matrice)
 end
 
 def test_addition(matriceA, matriceB)
-    if test_matrice_caree(matriceA) || test_matrice_caree(matriceB)
+    if test_matrice_carree(matriceA) || test_matrice_carree(matriceB)
         colA = matriceA[0].length
         colB = matriceB[0].length
         lignesA = matriceA.length
@@ -157,6 +157,7 @@ while true
             afficher_matrice(matriceR)
         else
             puts "\nAddition impossible - Matrices incompatibles"
+        end
         break
     when 2
         puts "\nCréation de la matrice A"
