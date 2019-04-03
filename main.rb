@@ -139,10 +139,10 @@ puts "2. Produit MatriceA*MatriceB"
 puts "3. Produit a*MatriceA"
 puts ""
 
-print "Veuillez faire un choix : " # contrairement au puts le print n'éffectue pas de saut de ligne
-choix = gets.chomp.to_i # récupère le choix de l'utilisateur
-
 while true 
+    print "Veuillez faire un choix : " # contrairement au puts le print n'éffectue pas de saut de ligne
+    choix = gets.chomp.to_i # récupère le choix de l'utilisateur
+
     case choix 
     when 1 # choix de l'addition
         puts "\nCréation de la matrice A"
@@ -186,7 +186,7 @@ while true
         afficher_matrice(matriceR)
         break
     else 
-        puts "choix indisponible"
+        puts "choix indisponible\n"
     end
 end 
 
