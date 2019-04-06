@@ -1,5 +1,8 @@
-# Matrice
+# matrice
 
+![matrix transpositions](https://media.giphy.com/media/35v2AuS45pUre/giphy.gif)
+
+`matrice` est un petit programme de calcul de matrice entièrement réalisé en Ruby sans aucune librairie. Il a été codé *from scratch*. Il sert à éffectuer différentes opération sur les matrices telles que la multiplication, l'addition, etc.
 
 #### TODO
 
