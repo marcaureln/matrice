@@ -1,8 +1,8 @@
-print "Appuyer sur une touche pour commencer..."
+print "Appuyer sur une Entrer pour commencer..."
 gets
 
 begin
-    exec("ocra main.rb")    
+    system("ocra --output matrice.exe ../main.rb")    
 rescue => exception
     puts "Impossible de compiler le script"
     puts exception.message
