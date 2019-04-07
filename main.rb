@@ -14,7 +14,8 @@ def creer_matrice()
     # le nbre d'elts des tableaux enfants correspond au nombre de colonne;
     matrice = Array.new(lignes) {Array.new(col, 0)} #=> [[0, 0, 0], [0, 0, 0], [0, 0, 0], ...]
     
-    # V là ça devient chaud !!!    
+    # V là ça devient chaud !!!
+    puts ""    
     puts "Remplissez votre matrice : "
     for a in 1..lignes do # boucle qui part de 1 au nombre de lignes renseigné par l'utilisateur
         print "Ligne #{a} : " # affiche le numéro de la ligne
@@ -36,17 +37,17 @@ def afficher_matrice(matrice)
     lignes = matrice.length # le nbre de lignes correspond au nombre d'elts du tableau parent
     col = matrice[0].length # le nbre de colonnes correspond au nombre d'elts d'un des tableaux enfants
 
-    for a in 1..lignes do # boucle qui affiche les lignes de la matrice
+    for a in 0..lignes-1 do # boucle qui affiche les lignes de la matrice
         for b in 0..col-1 do # la boucle affiche une ligne de la matrice
-            nombre = matrice[a-1][b]
+            nombre = matrice[a][b] # récupère le coefficient situé à la position a,b de la matrice
             print " " if nombre >= 0 # pour résoudre le problème de décalage causé par les nombres négatifs
-            print "#{nombre} "       
+            print nombre, " " # affiche le coefficient contenu dans la variable      
         end
-        print "\n"
+        print "\n" # saut de ligne après l'affichage d'une ligne
     end
 end
 
-def produit_matrice(matriceA, matriceB)
+def produit(matriceA, matriceB)
     # initialisation de la matrice résultat
     matrice = Array.new(matriceA.length) {Array.new(matriceB[0].length, 0)}
     # stocker le nombre de lignes et de colonnes pour pouvoir les utiliser plus facilement
@@ -67,21 +68,7 @@ def produit_matrice(matriceA, matriceB)
     return matrice
 end
 
-def addition_matrice(matriceA, matriceB)
-    matrice = Array.new(matriceA.length) {Array.new(matriceB[0].length, 0)}
-    lignes = matrice.length
-    col = matrice[0].length
-
-    for i in 0..lignes-1 do 
-        for ii in 0..col-1 do            
-            matrice[i][ii] = matriceA[i][ii]+matriceB[i][ii]
-        end
-    end
-    
-    return matrice
-end
-
-def produit_reel(matriceA, a)
+def produit_scalaire(matriceA, a)
     matrice = Array.new(matriceA.length) {Array.new(matriceA[0].length, 0)}
     lignes = matrice.length
     col = matrice[0].length
@@ -95,38 +82,52 @@ def produit_reel(matriceA, a)
     return matrice
 end
 
-def test_produit(matriceA, matriceB) 
-    colA = matriceA[0].length
-    lignesB = matriceB.length
-    if colA == lignesB
-        return true 
+def addition(matriceA, matriceB)
+    matrice = Array.new(matriceA.length) {Array.new(matriceB[0].length, 0)}
+    lignes = matrice.length
+    col = matrice[0].length
+
+    for i in 0..lignes-1 do 
+        for ii in 0..col-1 do            
+            matrice[i][ii] = matriceA[i][ii]+matriceB[i][ii]
+        end
+    end
+    
+    return matrice
+end
+
+
+def produit?(matriceA, matriceB) # test si le produit A*B existe
+    colA = matriceA[0].length # récupère le nombre de colonnes de la matrice A
+    lignesB = matriceB.length # récupère le nombre de lignes de la matrice B
+    if colA == lignesB # vérifie si le nombre de colonnes de A est égal au nombre de lignes de B
+        return true # si oui retourne vrai
     else
-        return false
+        return false # sinon retourne faux
     end
 end
 
-def test_matrice_carree(matrice)
-    if matrice.length == matrice[0].length
-        return true
+def carree?(matrice) # test si la matrice est carrée
+    if matrice.length == matrice[0].length # vérifie si le nombre de lignes est égal au nombre de colonnes
+        return true # si oui il retourne vrai
     else
-        return false
+        return false # sinon il retourne faux
     end
 end
 
-def test_addition(matriceA, matriceB)
-    if test_matrice_carree(matriceA) || test_matrice_carree(matriceB)
-        colA = matriceA[0].length
-        colB = matriceB[0].length
-        lignesA = matriceA.length
-        lignesB = matriceB.length
+def addition?(matriceA, matriceB) # test si l'addition est possible
+    if carree?(matriceA) and carree?(matriceB) # vérifie d'abord si les matrices sont carrées
+        # si la matrice est carrée l'on n'a juste à comparer le nombre de lignes (car le nbre de lignes égal au nbre de colonnes)
+        formatA = matriceA.length 
+        formatB = matriceB.length
 
-        if colA == colB and lignesA == lignesB
-            return true
+        if formatA == formatB # si les matrices ont le même format
+            return true # la fonction retourne vrai
         else
-            return false
+            return false # sinon elle retourne faux
         end
     else
-        return false
+        return false # l'addition est possible qu'avec les matrices carrées
     end
 end
 
@@ -155,8 +156,8 @@ while true
         puts "\nCréation de la matrice B"
         matriceB = creer_matrice()
 
-        if test_addition(matriceA, matriceB) # retourne vrai si les matrices sont compatibles
-            matriceR = addition_matrice(matriceA, matriceB) 
+        if addition?(matriceA, matriceB) # retourne vrai si les matrices sont compatibles
+            matriceR = addition(matriceA, matriceB) 
             puts "\nRésultat MatriceA+MatriceB"
             afficher_matrice(matriceR)
         else # sinon on affiche que le calcul est impossible
@@ -170,8 +171,8 @@ while true
         puts "\nCréation de la matrice B"
         matriceB = creer_matrice()
         
-        if test_produit(matriceA, matriceB) # test dans un premier temps si la multiplication est possible
-            matriceR = produit_matrice(matriceA, matriceB) # si oui
+        if produit?(matriceA, matriceB) # test dans un premier temps si la multiplication est possible
+            matriceR = produit(matriceA, matriceB) # si oui
             puts "\nRésultat MatriceA*MatriceB"
             afficher_matrice(matriceR)            
         else # sinon on affiche que le calcul est impossible
@@ -185,7 +186,7 @@ while true
         print "\nValeur de a : "
         a = gets.chomp.to_i
         
-        matriceR = produit_reel(matriceA, a)
+        matriceR = produit_scalaire(matriceA, a)
         puts "\nRésultat a*MatriceA"
         afficher_matrice(matriceR)
         break
