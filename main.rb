@@ -134,11 +134,14 @@ end
 puts "ALGORITHME - OPERATIONS SUR LES MATRICES"
 puts ""
 puts "-------------- Menu -----------------"
-puts "1. Addition MatriceA+MatriceB"
-puts "2. Produit MatriceA*MatriceB"
-puts "3. Produit a*MatriceA"
-puts "4. Quitter le programme"
-puts ""
+puts "1. Addition A+B"
+puts "2. Produit A*B"
+puts "3. Produit λ*A"
+puts "4. Transposée tA"
+puts "5. Puissance A^n"
+puts "6. Déterminant det(A)"
+puts "7. Inverse A^-1"
+puts "0. Quitter le programme\n"
 
 while true 
     print "Veuillez faire un choix : " # contrairement au puts le print n'éffectue pas de saut de ligne avant ou après la chaine de caractère
@@ -186,7 +189,7 @@ while true
         puts "\nRésultat a*MatriceA"
         afficher_matrice(matriceR)
         break
-    when 4 # quand l'utilisateur décide de quitter le programme
+    when 0 # quand l'utilisateur décide de quitter le programme
         break
     else 
         puts "choix indisponible\n\n"
