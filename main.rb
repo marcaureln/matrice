@@ -144,7 +144,8 @@ puts "6. Déterminant det(A)"
 puts "7. Inverse A^-1"
 puts "0. Quitter le programme\n"
 
-while true 
+while true
+    puts "" 
     print "Veuillez faire un choix : " # contrairement au puts le print n'éffectue pas de saut de ligne avant ou après la chaine de caractère
     choix = gets.chomp.to_i # récupère le choix de l'utilisateur
 
@@ -190,10 +191,18 @@ while true
         puts "\nRésultat a*MatriceA"
         afficher_matrice(matriceR)
         break
+    when 4
+        puts "Option indisponible actuellement - En cours de développement..."
+    when 5
+        puts "Option indisponible actuellement - En cours de développement..."
+    when 6
+        puts "Option indisponible actuellement - En cours de développement..."
+    when 7
+        puts "Option indisponible actuellement - En cours de développement..."
     when 0 # quand l'utilisateur décide de quitter le programme
         break
     else 
-        puts "choix indisponible\n\n"
+        puts "Choix incorrect!"
     end
 end 
 
