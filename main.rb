@@ -194,17 +194,35 @@ while true
     when 4
         puts "Option indisponible actuellement - En cours de développement..."
     when 5
-        puts "Option indisponible actuellement - En cours de développement..."
+        puts "\nCréation de la matrice A"
+        matriceA = creer_matrice()
+
+        print "\nValeur de n : "
+        n = gets.chomp.to_i
+        
+        if produit?(matriceA, matriceA) # test dans un premier temps si la multiplication est possible
+            matriceR = produit(matriceA, matriceA) # si oui
+            n -= 1
+            while n > 1
+                matriceR = produit(matriceR, matriceA)
+                n -= 1                
+            end
+            puts "\nRésultat MatriceA^n"
+            afficher_matrice(matriceR)            
+        else # sinon on affiche que le calcul est impossible
+            puts "\nCalcul impossible"
+        end
+        break
     when 6
         puts "Option indisponible actuellement - En cours de développement..."
     when 7
         puts "Option indisponible actuellement - En cours de développement..."
     when 0 # quand l'utilisateur décide de quitter le programme
         break
-    else 
+    else # affiche choix incorrect lorsque l'utilisateur saisi n'importe quoi
         puts "Choix incorrect!"
     end
 end 
 
-print "\nAppuyer sur une touche..."
+print "\nAppuyer sur entrée..."
 gets
