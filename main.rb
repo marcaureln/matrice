@@ -193,7 +193,7 @@ while true
         break
     when 4
         puts "Option indisponible actuellement - En cours de développement..."
-    when 5
+    when 5 # TEST NEEDED!!!
         puts "\nCréation de la matrice A"
         matriceA = creer_matrice()
 
