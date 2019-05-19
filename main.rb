@@ -96,6 +96,15 @@ def addition(matriceA, matriceB)
     return matrice
 end
 
+def puissance(matriceA, n)
+    matriceR = Array.new(matriceA.length) {Array.new(matriceA.length, 1)}
+    while n > 1
+        matriceR = produit(matriceR, matriceA)
+        n -= 1                
+    end
+    return matriceR
+end
+
 def transposee(matrice)
     taille = matrice.length
 
@@ -216,7 +225,7 @@ while true
             puts "\nCalcul impossible"
         end
         break
-    when 5 # choix de la multiplication par un scalaire | TEST NEEDED!!!
+    when 5 # choix de la puissance d'une matrice | TEST NEEDED!!!
         puts "\nCréation de la matrice A"
         matriceA = creer_matrice()
 
@@ -224,12 +233,7 @@ while true
         n = gets.chomp.to_i
         
         if produit?(matriceA, matriceA) # test dans un premier temps si la multiplication est possible
-            matriceR = produit(matriceA, matriceA) # si oui
-            n -= 1
-            while n > 1
-                matriceR = produit(matriceR, matriceA)
-                n -= 1                
-            end
+            matriceR = puissance(matriceA)
             puts "\nRésultat MatriceA^n"
             afficher_matrice(matriceR)            
         else # sinon on affiche que le calcul est impossible
