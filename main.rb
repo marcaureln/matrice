@@ -96,6 +96,19 @@ def addition(matriceA, matriceB)
     return matrice
 end
 
+def transposee(matrice)
+    taille = matrice.length
+
+    matriceT = Array.new(taille) {Array.new(taille, 0)}
+
+    for i in 0..taille-1 do 
+        for j in 0..taille-1 do 
+            matriceT[j][i] = matrice[i][j]   
+        end
+    end
+
+    return matriceT
+end
 
 def produit?(matriceA, matriceB) # test si le produit A*B existe
     colA = matriceA[0].length # récupère le nombre de colonnes de la matrice A
@@ -191,9 +204,19 @@ while true
         puts "\nRésultat a*MatriceA"
         afficher_matrice(matriceR)
         break
-    when 4
-        puts "Option indisponible actuellement - En cours de développement..."
-    when 5 # TEST NEEDED!!!
+    when 4 # choix de la transposée | TEST NEEDED!!!
+        puts "\nCréation de la matrice"
+        matrice = creer_matrice()
+
+        if carree?(matrice)
+            matriceT = transposee(matrice)
+            puts "\nTransposée de la Matrice"
+            afficher_matrice(matriceT)
+        else
+            puts "\nCalcul impossible"
+        end
+        break
+    when 5 # choix de la multiplication par un scalaire | TEST NEEDED!!!
         puts "\nCréation de la matrice A"
         matriceA = creer_matrice()
 
