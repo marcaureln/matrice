@@ -1,3 +1,7 @@
+# TODO 
+# [ ] puissance
+# [ ] transposée
+
 require './lib/matrice.rb'
 
 describe 'matrice' do
