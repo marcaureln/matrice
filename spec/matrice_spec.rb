@@ -1,17 +1,24 @@
 require './lib/matrice.rb'
 
 describe 'matrice' do
+    matriceA = [[2, 0, 1], [-1, 1, 2]]
+    matriceB = [[0, 2, 1], [1, 1, 0], [-1, -2, -1]] 
+    matriceC = [[1, 4, -2], [2, 7, 3]]
+    matriceD = [[5, -1, 6], [-2, 1, -3]]
+
     it 'return the right matrix A*B' do
-        matriceA = [[2, 0, 1], [-1, 1, 2]]
-        matriceB = [[0, 2, 1], [1, 1, 0], [-1, -2, -1]] 
-        matriceR = [[-1, 2, 1], [-1, -5, -3]]
-        expect(produit(matriceA, matriceB)).to eq matriceR
+        matrice = [[-1, 2, 1], [-1, -5, -3]]
+        expect(produit(matriceA, matriceB)).to eq matrice
     end
 
     it 'return the right matrix C+D' do 
-        matriceC = [[1, 4, -2], [2, 7, 3]]
+        matrice = [[6, 3, 4], [0, 8, 0]]
+        expect(addition(matriceC,matriceD)).to eq matrice
+    end
+
+    it 'return the right matrix -D' do 
         matriceD = [[5, -1, 6], [-2, 1, -3]]
-        matriceR = [[6, 3, 4], [0, 8, 0]]
-        expect(addition(matriceC,matriceD)).to eq matriceR
+        matrice = [[-5, 1, -6], [2, -1, 3]]
+        expect(produit_scalaire(matriceD, -1)).to eq matrice
     end
 end
