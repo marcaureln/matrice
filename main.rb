@@ -18,7 +18,7 @@ def creer_matrice()
     puts ""    
     puts "Remplissez votre matrice : "
     for i in 1..lignes do # boucle qui part de 1 au nombre de lignes renseigné par l'utilisateur
-        print "Ligne #{a} : " # affiche le numéro de la ligne
+        print "Ligne #{i} : " # affiche le numéro de la ligne
         saisie = gets.chomp # récupère la ligne en chaine de caractère
         ligne = saisie.split(" ") # divise la chaine de caractère en "substring" (sous-chaine) et retourne un tableau des différentes petites chaines
         ligne.map!{ |x| x.to_i } # converti tous les éléments (string) du tableau en entier
@@ -153,20 +153,24 @@ def addition?(matriceA, matriceB) # test si l'addition est possible
     end
 end
 
+def afficher_menu()
+    puts ""
+    puts "-------------- Menu -----------------"
+    puts "1. Addition A+B"
+    puts "2. Produit A*B"
+    puts "3. Produit λ*A"
+    puts "4. Transposée tA"
+    puts "5. Puissance A^n"
+    puts "6. Déterminant det(A)"
+    puts "7. Inverse A^-1"
+    puts "0. Quitter le programme\n"
+end
+
 # PROGRAM START HERE !
 puts "ALGORITHME - OPERATIONS SUR LES MATRICES"
-puts ""
-puts "-------------- Menu -----------------"
-puts "1. Addition A+B"
-puts "2. Produit A*B"
-puts "3. Produit λ*A"
-puts "4. Transposée tA"
-puts "5. Puissance A^n"
-puts "6. Déterminant det(A)"
-puts "7. Inverse A^-1"
-puts "0. Quitter le programme\n"
 
 while true
+    afficher_menu()
     puts "" 
     print "Veuillez faire un choix : " # contrairement au puts le print n'éffectue pas de saut de ligne avant ou après la chaine de caractère
     choix = gets.chomp.to_i # récupère le choix de l'utilisateur
@@ -186,7 +190,6 @@ while true
         else # sinon on affiche que le calcul est impossible
             puts "\nAddition impossible - Matrices incompatibles"
         end
-        break
     when 2 # choix de la multiplication de matrices
         puts "\nCréation de la matrice A"
         matriceA = creer_matrice()
@@ -201,7 +204,6 @@ while true
         else # sinon on affiche que le calcul est impossible
             puts "\nProduit impossible - Matrices incompatibles"
         end
-        break
     when 3 # choix de la multiplication de matrice avec un réel
         puts "\nCréation de la matrice A"
         matriceA = creer_matrice()
@@ -212,7 +214,6 @@ while true
         matriceR = produit_scalaire(matriceA, a)
         puts "\nRésultat a*MatriceA"
         afficher_matrice(matriceR)
-        break
     when 4 # choix de la transposée | TEST NEEDED!!!
         puts "\nCréation de la matrice"
         matrice = creer_matrice()
@@ -224,7 +225,6 @@ while true
         else
             puts "\nCalcul impossible"
         end
-        break
     when 5 # choix de la puissance d'une matrice | TEST NEEDED!!!
         puts "\nCréation de la matrice A"
         matriceA = creer_matrice()
@@ -239,7 +239,6 @@ while true
         else # sinon on affiche que le calcul est impossible
             puts "\nCalcul impossible"
         end
-        break
     when 6
         puts "Option indisponible actuellement - En cours de développement..."
     when 7
