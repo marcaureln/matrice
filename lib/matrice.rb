@@ -45,7 +45,7 @@ def afficher_matrice(matrice)
 end
 
 def produit(matriceA, matriceB)
-    return false if produit?(matriceA, matriceB)
+    return false if !produit?(matriceA, matriceB)
     # initialisation de la matrice résultat
     matrice = Array.new(matriceA.length) {Array.new(matriceB[0].length, 0)}
     # stocker le nombre de lignes et de colonnes pour pouvoir les utiliser plus facilement
@@ -82,7 +82,7 @@ def produit_scalaire(matriceA, k)
 end
 
 def addition(matriceA, matriceB)
-    return false if addition?(matriceA, matriceB)
+    return false if !addition?(matriceA, matriceB)
     # L'addition est possible uniquement sur les matrices de même format
     # Ce qui implique que lignesA = lignesB et colA = colB
     lignes = matriceA.length 
@@ -141,7 +141,7 @@ def carree?(matrice) # test si la matrice est carrée
 end
 
 def addition?(matriceA, matriceB) # test si l'addition est possible
-    if (matriceA.length == matriceB.lenght) and (matriceA[0]lenght == matriceB[0]) # vérifie si les matrices sont de même format
+    if (matriceA.length == matriceB.length) and (matriceA[0].length == matriceB[0].length) # vérifie si les matrices sont de même format
         return true # la fonction retourne vrai
     else 
         return false # sinon elle retourne faux

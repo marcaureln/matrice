@@ -11,9 +11,17 @@ describe 'matrice' do
         expect(produit(matriceA, matriceB)).to eq matrice
     end
 
+    it 'should return false because B*A does not exist' do
+        expect(produit(matriceB, matriceA)).to eq false
+    end
+
     it 'return the right matrix C+D' do 
         matrice = [[6, 3, 4], [0, 8, 0]]
         expect(addition(matriceC,matriceD)).to eq matrice
+    end
+
+    it 'should return false because matrix B and D do not have the same format' do 
+        expect(addition(matriceB, matriceD)).to eq false
     end
 
     it 'return the right matrix -D' do 
