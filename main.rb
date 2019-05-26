@@ -14,19 +14,16 @@ def creer_matrice()
     # le nbre d'elts des tableaux enfants correspond au nombre de colonne;
     matrice = Array.new(lignes) {Array.new(col, 0)} #=> [[0, 0, 0], [0, 0, 0], [0, 0, 0], ...]
     
-    # V là ça devient chaud !!!
+    # Remplissage de la matrice
     puts ""    
     puts "Remplissez votre matrice : "
-    for a in 1..lignes do # boucle qui part de 1 au nombre de lignes renseigné par l'utilisateur
+    for i in 1..lignes do # boucle qui part de 1 au nombre de lignes renseigné par l'utilisateur
         print "Ligne #{a} : " # affiche le numéro de la ligne
-        saisie = gets.chomp # récupère la signe en chaine de caractère
+        saisie = gets.chomp # récupère la ligne en chaine de caractère
         ligne = saisie.split(" ") # divise la chaine de caractère en "substring" (sous-chaine) et retourne un tableau des différentes petites chaines
         ligne.map!{ |x| x.to_i } # converti tous les éléments (string) du tableau en entier
-        c = 0 # représente l'index dans le tableau ligne = numero de la colonne
-        for b in 0..col-1 do # b = numero de colonne dans la matrice
-            matrice[a-1][b] = ligne[c] # a-1 car le tableau commence à l'index 0     
-            b+=1 # incrémante de 1 
-            c+=1 # idem
+        for j in 0..col-1 do # j représente l'index dans le tableau ligne = numero de la colonne dans la matrice
+            matrice[i-1][j] = ligne[j] # a-1 car le tableau commence à l'index 0     
         end
     end
     return matrice # la fonction retourne la matrice (c'est un Array ou tableau)
@@ -37,9 +34,9 @@ def afficher_matrice(matrice)
     lignes = matrice.length # le nbre de lignes correspond au nombre d'elts du tableau parent
     col = matrice[0].length # le nbre de colonnes correspond au nombre d'elts d'un des tableaux enfants
 
-    for a in 0..lignes-1 do # boucle qui affiche les lignes de la matrice
-        for b in 0..col-1 do # la boucle affiche une ligne de la matrice
-            nombre = matrice[a][b] # récupère le coefficient situé à la position a,b de la matrice
+    for i in 0..lignes-1 do # boucle qui affiche les lignes de la matrice
+        for j in 0..col-1 do # la boucle affiche une ligne de la matrice
+            nombre = matrice[i][j] # récupère le coefficient situé à la position a,b de la matrice
             print " " if nombre >= 0 # pour résoudre le problème de décalage causé par les nombres négatifs
             print nombre, " " # affiche le coefficient contenu dans la variable      
         end
@@ -68,14 +65,15 @@ def produit(matriceA, matriceB)
     return matrice
 end
 
-def produit_scalaire(matriceA, a)
-    matrice = Array.new(matriceA.length) {Array.new(matriceA[0].length, 0)}
-    lignes = matrice.length
-    col = matrice[0].length
+def produit_scalaire(matriceA, k)
+    lignes = matriceA.length
+    col = matriceA[0].length
+
+    matrice = Array.new(lignes) {Array.new(col, 0)}
 
     for i in 0..lignes-1 do 
-        for ii in 0..col-1 do            
-            matrice[i][ii] = matriceA[i][ii]*a
+        for j in 0..col-1 do            
+            matrice[i][j] = matriceA[i][j]*k
         end
     end
     
@@ -83,13 +81,14 @@ def produit_scalaire(matriceA, a)
 end
 
 def addition(matriceA, matriceB)
-    matrice = Array.new(matriceA.length) {Array.new(matriceB[0].length, 0)}
-    lignes = matrice.length
-    col = matrice[0].length
+    # L'addition est possible uniquement sur les matrices carrées de même format
+    # Ce qui implique que lignesA = lignesB = colA = colB = taille
+    taille = matriceA.length 
+    matrice = Array.new(taille) {Array.new(taille, 0)}
 
-    for i in 0..lignes-1 do 
-        for ii in 0..col-1 do            
-            matrice[i][ii] = matriceA[i][ii]+matriceB[i][ii]
+    for i in 0..taille-1 do 
+        for j in 0..taille-1 do            
+            matrice[i][j] = matriceA[i][j]+matriceB[i][j]
         end
     end
     
@@ -97,12 +96,13 @@ def addition(matriceA, matriceB)
 end
 
 def puissance(matriceA, n)
-    matriceR = Array.new(matriceA.length) {Array.new(matriceA.length, 1)}
+    taille = matriceA.length
+    matrice = Array.new(taille) {Array.new(taille, 1)}
     while n > 1
-        matriceR = produit(matriceR, matriceA)
+        matriceR = produit(matrice, matriceA)
         n -= 1                
     end
-    return matriceR
+    return matrice
 end
 
 def transposee(matrice)
