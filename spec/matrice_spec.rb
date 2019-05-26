@@ -7,4 +7,11 @@ describe 'matrice' do
         matriceR = [[-1, 2, 1], [-1, -5, -3]]
         expect(produit(matriceA, matriceB)).to eq matriceR
     end
+
+    it 'return the right matrix C+D' do 
+        matriceC = [[1, 4, -2], [2, 7, 3]]
+        matriceD = [[5, -1, 6], [-2, 1, -3]]
+        matriceR = [[6, 3, 4], [0, 8, 0]]
+        expect(addition(matriceC,matriceD)).to eq matriceR
+    end
 end
