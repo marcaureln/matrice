@@ -1,5 +1,5 @@
 begin
-    load "main.rb"    
+    load "./src/main.rb"    
 rescue => exception
     puts "Impossible de charger le fichier main.rb"
     puts exception.message
