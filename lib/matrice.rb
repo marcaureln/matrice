@@ -81,13 +81,14 @@ def produit_scalaire(matriceA, k)
 end
 
 def addition(matriceA, matriceB)
-    # L'addition est possible uniquement sur les matrices carrées de même format
-    # Ce qui implique que lignesA = lignesB = colA = colB = taille
-    taille = matriceA.length 
-    matrice = Array.new(taille) {Array.new(taille, 0)}
+    # L'addition est possible uniquement sur les matrices de même format
+    # Ce qui implique que lignesA = lignesB et colA = colB
+    lignes = matriceA.length 
+    col = matriceA[0].length
+    matrice = Array.new(lignes) {Array.new(col, 0)}
 
-    for i in 0..taille-1 do 
-        for j in 0..taille-1 do            
+    for i in 0..lignes-1 do 
+        for j in 0..col-1 do            
             matrice[i][j] = matriceA[i][j]+matriceB[i][j]
         end
     end
