@@ -23,6 +23,10 @@ describe 'matrice' do
         it 'Scalar multiplication' do 
             expect(produit_scalaire(matriceD, -1)).to eq [[-5, 1, -6], [2, -1, 3]]
         end
+
+        it 'Transposition' do
+            expect(transposee(matriceA)).to eq [[2, -1], [0, 1], [1, 2]] 
+        end
     end
 
     context 'Verify possible operations' do
