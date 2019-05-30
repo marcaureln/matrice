@@ -1,6 +1,4 @@
 # TODO 
-# [ ] puissance
-# [ ] transposée
 # [ ] carree?
 
 require './lib/matrice.rb'
@@ -26,6 +24,14 @@ describe 'matrice' do
 
         it 'Transposition' do
             expect(transposee(matriceA)).to eq [[2, -1], [0, 1], [1, 2]] 
+        end
+
+        it 'Power ^2' do 
+            expect(puissance(matriceB, 5)).to eq [[1, 0, -1], [1, 3, 1], [-1, -2, 0]]
+        end
+        
+        it 'Power ^5' do 
+            expect(puissance(matriceB, 5)).to eq [[3, 8, 3], [5, 9, 1], [-5, -10, -2]]
         end
     end
 
