@@ -2,7 +2,7 @@ require_relative 'matrice.rb'
 
 def afficher_menu()
     puts ""
-    puts "-------------- Menu -----------------"
+    puts "=========== MENU ==========="
     puts "1. Addition A+B"
     puts "2. Produit A*B"
     puts "3. Produit λ*A"
