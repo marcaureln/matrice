@@ -1,7 +1,3 @@
-# TODO 
-# [ ] puissance
-# [ ] transposée
-
 require './lib/matrice.rb'
 
 describe 'matrice' do
@@ -10,27 +6,43 @@ describe 'matrice' do
     matriceC = [[1, 4, -2], [2, 7, 3]]
     matriceD = [[5, -1, 6], [-2, 1, -3]]
 
-    it 'return the right matrix A*B' do
-        matrice = [[-1, 2, 1], [-1, -5, -3]]
-        expect(produit(matriceA, matriceB)).to eq matrice
+    context 'Basic operations' do 
+        it 'Multiplication' do
+            expect(produit(matriceA, matriceB)).to eq [[-1, 2, 1], [-1, -5, -3]]
+        end
+
+        it 'Addition' do 
+            expect(addition(matriceC,matriceD)).to eq [[6, 3, 4], [0, 8, 0]]
+        end
+
+        it 'Scalar multiplication' do 
+            expect(produit_scalaire(matriceD, -1)).to eq [[-5, 1, -6], [2, -1, 3]]
+        end
+
+        it 'Transposition' do
+            expect(transposee(matriceA)).to eq [[2, -1], [0, 1], [1, 2]] 
+        end
+
+        it 'Power' do 
+            expect(puissance(matriceB, 2)).to eq [[1, 0, -1], [1, 3, 1], [-1, -2, 0]]
+            expect(puissance(matriceB, 5)).to eq [[3, 8, 3], [5, 9, 1], [-5, -10, -2]]
+        end
     end
 
-    it 'should return false because B*A does not exist' do
-        expect(produit(matriceB, matriceA)).to eq false
+    context 'Verify possible operations' do
+        it 'Multiplication?' do
+            expect(produit?(matriceB, matriceA)).to eq false
+        end
+
+        it 'Addition?' do 
+            expect(addition?(matriceB, matriceD)).to eq false
+        end
     end
 
-    it 'return the right matrix C+D' do 
-        matrice = [[6, 3, 4], [0, 8, 0]]
-        expect(addition(matriceC,matriceD)).to eq matrice
-    end
-
-    it 'should return false because matrix B and D do not have the same format' do 
-        expect(addition(matriceB, matriceD)).to eq false
-    end
-
-    it 'return the right matrix -D' do 
-        matriceD = [[5, -1, 6], [-2, 1, -3]]
-        matrice = [[-5, 1, -6], [2, -1, 3]]
-        expect(produit_scalaire(matriceD, -1)).to eq matrice
+    context 'Recognize matrix family or type' do 
+        it 'Square?' do 
+            expect(carree?(matriceA)).to eq false            
+            expect(carree?(matriceB)).to eq true
+        end
     end
 end
