@@ -1,6 +1,3 @@
-# TODO 
-# [ ] carree?
-
 require './lib/matrice.rb'
 
 describe 'matrice' do
@@ -42,6 +39,13 @@ describe 'matrice' do
 
         it 'Addition?' do 
             expect(addition?(matriceB, matriceD)).to eq false
+        end
+    end
+
+    context 'Recognize matrix family or type' do 
+        it 'Square?' do 
+            expect(carree?(matriceA)).to eq false            
+            expect(carree?(matriceB)).to eq true
         end
     end
 end
