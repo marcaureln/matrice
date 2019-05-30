@@ -97,10 +97,9 @@ def addition(matriceA, matriceB)
 end
 
 def puissance(matriceA, n)
-    taille = matriceA.length
-    matrice = Array.new(taille) {Array.new(taille, 1)}
+    matrice = matriceA
     while n > 1
-        matriceR = produit(matrice, matriceA)
+        matrice = produit(matrice, matriceA)
         n -= 1                
     end
     return matrice
