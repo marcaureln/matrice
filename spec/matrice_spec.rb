@@ -27,7 +27,7 @@ describe 'matrice' do
         end
 
         it 'Power ^2' do 
-            expect(puissance(matriceB, 5)).to eq [[1, 0, -1], [1, 3, 1], [-1, -2, 0]]
+            expect(puissance(matriceB, 2)).to eq [[1, 0, -1], [1, 3, 1], [-1, -2, 0]]
         end
         
         it 'Power ^5' do 

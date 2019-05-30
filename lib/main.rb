@@ -85,7 +85,7 @@ while true
         print "\nValeur de n : "
         n = gets.chomp.to_i
         
-        if produit?(matriceA, matriceA) # test dans un premier temps si la multiplication est possible
+        if carre?(matriceA) # test dans un premier temps si la multiplication est possible
             matriceR = puissance(matriceA)
             puts "\nRésultat MatriceA^n"
             afficher_matrice(matriceR)            
