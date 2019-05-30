@@ -10,14 +10,20 @@
 - [x] remplacer les bloc par des methodes (pour plus de modularité)
 - [x] gérer les erreurs liées aux format des matrices (pour l'addition et le produit)
 - [x] ajouter des tests rspec
-- [ ] écrire plus de test
 - [ ] build un executable
-- [ ] rédiger la documentation
 - [ ] construire une classe matrice et un module contenant toutes les opérations sur les matrices
 - [ ] calcul du déterminant et de l'inverse d'une matrice
 - [ ] gestion des erreurs (math_error, synthax_error, ...)
 - [ ] reconnaissance du type des matrices (carrée, diagonale, unitaire, ...)
 - [ ] refractoring, optimization 
+
+## Comment l'utiliser ?
+0. Téléchargez et installez Ruby (si vous ne l'avez pas déjà)
+1. Téléchargez ou cloner le dépot sur votre ordinateur
+2. Ouvrez votre terminal et rendez vous dans le dossier `lib`
+3. Faites `ruby main.rb` pour lancer le programme
+
+**N.B.:** Une version exectutable sera bientôt disponible.
 
 ## Contribution
 
