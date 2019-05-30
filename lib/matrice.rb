@@ -45,7 +45,6 @@ def afficher_matrice(matrice)
 end
 
 def produit(matriceA, matriceB)
-    return false if !produit?(matriceA, matriceB)
     # initialisation de la matrice résultat
     matrice = Array.new(matriceA.length) {Array.new(matriceB[0].length, 0)}
     # stocker le nombre de lignes et de colonnes pour pouvoir les utiliser plus facilement
@@ -82,7 +81,6 @@ def produit_scalaire(matriceA, k)
 end
 
 def addition(matriceA, matriceB)
-    return false if !addition?(matriceA, matriceB)
     # L'addition est possible uniquement sur les matrices de même format
     # Ce qui implique que lignesA = lignesB et colA = colB
     lignes = matriceA.length 
@@ -109,12 +107,12 @@ def puissance(matriceA, n)
 end
 
 def transposee(matrice)
-    taille = matrice.length
+    lignes = matrice.length
+    col = matrice[0].length
+    matriceT = Array.new(col) {Array.new(lignes, 0)}
 
-    matriceT = Array.new(taille) {Array.new(taille, 0)}
-
-    for i in 0..taille-1 do 
-        for j in 0..taille-1 do 
+    for i in 0..lignes-1 do 
+        for j in 0..col-1 do 
             matriceT[j][i] = matrice[i][j]   
         end
     end

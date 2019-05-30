@@ -75,14 +75,9 @@ while true
     when 4 # choix de la transposée | TEST NEEDED!!!
         puts "\nCréation de la matrice"
         matrice = creer_matrice()
-
-        if carree?(matrice)
-            matriceT = transposee(matrice)
-            puts "\nTransposée de la Matrice"
-            afficher_matrice(matriceT)
-        else
-            puts "\nCalcul impossible"
-        end
+        matriceT = transposee(matrice)
+        puts "\nTransposée de la Matrice"
+        afficher_matrice(matriceT)
     when 5 # choix de la puissance d'une matrice | TEST NEEDED!!!
         puts "\nCréation de la matrice A"
         matriceA = creer_matrice()
