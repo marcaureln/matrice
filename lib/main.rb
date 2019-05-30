@@ -72,13 +72,13 @@ while true
         matriceR = produit_scalaire(matriceA, a)
         puts "\nRésultat a*MatriceA"
         afficher_matrice(matriceR)
-    when 4 # choix de la transposée | TEST NEEDED!!!
+    when 4 # choix de la transposée
         puts "\nCréation de la matrice"
         matrice = creer_matrice()
         matriceT = transposee(matrice)
         puts "\nTransposée de la Matrice"
         afficher_matrice(matriceT)
-    when 5 # choix de la puissance d'une matrice | TEST NEEDED!!!
+    when 5 # choix de la puissance d'une matrice
         puts "\nCréation de la matrice A"
         matriceA = creer_matrice()
 
