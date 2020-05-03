@@ -68,11 +68,17 @@ def addition(matriceA, matriceB)
     return matrice
 end
 
-#TODO: M^0 = I 
 def puissance(matrice, n)
+    return matrice_identite(matrice.length) if n == 0
     matriceN = matrice
     (n-1).times { matriceN = produit(matriceN, matrice) }
     return matriceN
+end
+
+def matrice_identite(n) # une matrice identité d'ordre n possède n lignes et n colonnes
+    matrice = Array.new(n) {Array.new(n, 0)}
+    for i in 0..n-1 { matrice[i][i] = 1 }
+    return matrice
 end
 
 def transposee(matrice)
@@ -87,6 +93,24 @@ def transposee(matrice)
     end
 
     return matriceT
+end
+
+def det(matrice)
+=begin (python)
+def determinant(matrix):
+    if (len(matrix) == 1):
+        return matrix[0][0]
+    if (len(matrix) == 2):
+        return matrix[0][0]*matrix[1][1]-matrix[0][1]*matrix[1][0]
+    det = 0
+    for i in range(len(matrix)):
+        minor = []
+        for j in range(1, len(matrix)):
+            row = [matrix[j][k] for k in range(len(matrix) ) if k != i]
+            minor.append(row)
+        det += ((-1)**(i))*matrix[0][i]*determinant(minor)
+    return det
+=end
 end
 
 def produit?(matriceA, matriceB) # test si le produit A*B existe
