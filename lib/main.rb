@@ -13,33 +13,18 @@ def afficher_menu()
     puts "0. Quitter le programme\n"
 end
 
-#                            $$\               $$\                     
-#                            $$ |              \__|                    
-#  $$$$$$\$$$$\   $$$$$$\  $$$$$$\    $$$$$$\  $$\  $$$$$$$\  $$$$$$\  
-#  $$  _$$  _$$\  \____$$\ \_$$  _|  $$  __$$\ $$ |$$  _____|$$  __$$\ 
-#  $$ / $$ / $$ | $$$$$$$ |  $$ |    $$ |  \__|$$ |$$ /      $$$$$$$$ |
-#  $$ | $$ | $$ |$$  __$$ |  $$ |$$\ $$ |      $$ |$$ |      $$   ____|
-#  $$ | $$ | $$ |\$$$$$$$ |  \$$$$  |$$ |      $$ |\$$$$$$$\ \$$$$$$$\ 
-#  \__| \__| \__| \_______|   \____/ \__|      \__| \_______| \_______|
-#                                                                      
-#                                                                      
-#    
 # PROGRAM START HERE !
-puts "ALGORITHME - OPERATIONS SUR LES MATRICES"
+puts "OPERATIONS SUR LES MATRICES"
 
 while true
     afficher_menu()
-    puts "" 
-    print "Veuillez faire un choix : " # contrairement au puts le print n'éffectue pas de saut de ligne avant ou après la chaine de caractère
+    print "\nVeuillez faire un choix : "
     choix = gets.chomp.to_i # récupère le choix de l'utilisateur
 
     case choix 
     when 1 # choix de l'addition
-        puts "\nCréation de la matrice A"
-        matriceA = creer_matrice()
-
-        puts "\nCréation de la matrice B"
-        matriceB = creer_matrice()
+        matriceA = creer_matrice("A")
+        matriceB = creer_matrice("B")
 
         if addition?(matriceA, matriceB) # retourne vrai si les matrices sont compatibles
             matriceR = addition(matriceA, matriceB) 
@@ -49,53 +34,45 @@ while true
             puts "\nAddition impossible - Matrices incompatibles"
         end
     when 2 # choix de la multiplication de matrices
-        puts "\nCréation de la matrice A"
-        matriceA = creer_matrice()
-
-        puts "\nCréation de la matrice B"
-        matriceB = creer_matrice()
+        matriceA = creer_matrice("A")
+        matriceB = creer_matrice("B")
         
-        if produit?(matriceA, matriceB) # test dans un premier temps si la multiplication est possible
-            matriceR = produit(matriceA, matriceB) # si oui
+        if produit?(matriceA, matriceB)
+            matriceR = produit(matriceA, matriceB)
             puts "\nRésultat MatriceA*MatriceB"
             afficher_matrice(matriceR)            
-        else # sinon on affiche que le calcul est impossible
+        else
             puts "\nProduit impossible - Matrices incompatibles"
         end
     when 3 # choix de la multiplication de matrice avec un réel
-        puts "\nCréation de la matrice A"
-        matriceA = creer_matrice()
+        matrice = creer_matrice()
 
-        print "\nValeur de a : "
+        print "\nValeur de λ : "
         a = gets.chomp.to_i
         
-        matriceR = produit_scalaire(matriceA, a)
-        puts "\nRésultat a*MatriceA"
+        matriceR = produit_scalaire(matrice, a)
+        puts "\nRésultat λ*M"
         afficher_matrice(matriceR)
     when 4 # choix de la transposée
-        puts "\nCréation de la matrice"
         matrice = creer_matrice()
         matriceT = transposee(matrice)
         puts "\nTransposée de la Matrice"
         afficher_matrice(matriceT)
     when 5 # choix de la puissance d'une matrice
-        puts "\nCréation de la matrice A"
-        matriceA = creer_matrice()
+        matriceA = creer_matrice("A")
 
         print "\nValeur de n : "
         n = gets.chomp.to_i
         
         if carre?(matriceA) # test dans un premier temps si la multiplication est possible
             matriceR = puissance(matriceA)
-            puts "\nRésultat MatriceA^n"
+            puts "\nRésultat A^n"
             afficher_matrice(matriceR)            
         else # sinon on affiche que le calcul est impossible
             puts "\nCalcul impossible"
         end
-    when 6
-        puts "Option indisponible actuellement - En cours de développement..."
-    when 7
-        puts "Option indisponible actuellement - En cours de développement..."
+    when 6, 7
+        puts "En cours de développement..."
     when 0 # quand l'utilisateur décide de quitter le programme
         break
     else # affiche choix incorrect lorsque l'utilisateur saisi n'importe quoi

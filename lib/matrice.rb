@@ -1,36 +1,25 @@
-def creer_matrice()
-    print "Entrez les dimensions de votre matrice (lignes colonnes): " # demande à l'utilisateur d'enter le format de la matrice
-    saisie = gets.chomp # récupérer la saisie de l'utilisateur
+def creer_matrice(nom = "")
+    puts "Création de la matrice #{nom}"
+    print "Entrez les dimensions de votre matrice (lignes colonnes): "
+    saisie = gets.chomp.split(" ").map!{ |x| x.to_i }
 
-    dimension = saisie.split(" ") # sépare la chaine de caractère en élément du tableau dimension
-    dimension.map!{ |x| x.to_i } # converti les string du tableau en integer (entier)
-
-    lignes = dimension[0]; # récupère le nombre de lignes à l'index 0 du tableau dimension
-    col = dimension[1]; # récupère le nombre de colonnes à l'index 1 du tableau dimension
+    lignes = saisie[0]; # récupère le nombre de lignes à l'index 0 du tableau dimension
+    col = saisie[1]; # récupère le nombre de colonnes à l'index 1 du tableau dimension
     puts "Format de votre matrice : #{lignes} lignes et #{col} colonnes" # affiche le format de la matrice
 
-    # initialise un tableau de tableaux;
-    # le nbre d'elts du tableau parent correspond au nombre de ligne;
-    # le nbre d'elts des tableaux enfants correspond au nombre de colonne;
     matrice = Array.new(lignes) {Array.new(col, 0)} #=> [[0, 0, 0], [0, 0, 0], [0, 0, 0], ...]
     
     # Remplissage de la matrice
-    puts ""    
-    puts "Remplissez votre matrice : "
-    for i in 1..lignes do # boucle qui part de 1 au nombre de lignes renseigné par l'utilisateur
-        print "Ligne #{i} : " # affiche le numéro de la ligne
-        ligne = gets.chomp.split(" ")
-        ligne.map!{ |x| x.to_i } # converti tous les éléments (string) du tableau en entier
-        for j in 0..col-1 do # j représente l'index dans le tableau ligne = numero de la colonne dans la matrice
-            matrice[i-1][j] = ligne[j] # a-1 car le tableau commence à l'index 0     
-        end
+    puts "\nRemplissez votre matrice : "
+    for i in 0..lignes-1 do
+        print "Ligne #{i+1} : "
+        matrice[i] = gets.chomp.split(" ").map!{ |x| x.to_i } # converti tous les elts (string) du tableau en entier
     end
     return matrice # la fonction retourne la matrice (c'est un Array ou tableau)
 end
 
 #TODO: gérer l'affichage des grands nombres 
 def afficher_matrice(matrice)
-    # plus besoin d'entrer le nbre de lignes ou de colonnes en parametres
     lignes = matrice.length # le nbre de lignes correspond au nombre d'elts du tableau parent
     col = matrice[0].length # le nbre de colonnes correspond au nombre d'elts d'un des tableaux enfants
 
