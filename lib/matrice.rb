@@ -103,27 +103,19 @@ def transposee(matrice)
 end
 
 def produit?(matriceA, matriceB) # test si le produit A*B existe
-    colA = matriceA[0].length # récupère le nombre de colonnes de la matrice A
-    lignesB = matriceB.length # récupère le nombre de lignes de la matrice B
-    if colA == lignesB # vérifie si le nombre de colonnes de A est égal au nombre de lignes de B
-        return true # si oui retourne vrai
-    else
-        return false # sinon retourne faux
-    end
+    # vérifie si le nombre de colonnes de A est égal au nombre de lignes de B
+    return matriceA[0].length == matriceB.length ? true : false 
 end
 
 def carree?(matrice) # test si la matrice est carrée
-    if matrice.length == matrice[0].length # vérifie si le nombre de lignes est égal au nombre de colonnes
-        return true # si oui il retourne vrai
-    else
-        return false # sinon il retourne faux
-    end
+    # vérifie si le nombre de lignes est égal au nombre de colonnes
+    return matrice.length == matrice[0].length ? true : false 
 end
 
 def addition?(matriceA, matriceB) # test si l'addition est possible
-    if (matriceA.length == matriceB.length) and (matriceA[0].length == matriceB[0].length) # vérifie si les matrices sont de même format
-        return true # la fonction retourne vrai
-    else 
-        return false # sinon elle retourne faux
+    # vérifie si les matrices sont de même format
+    if (matriceA.length == matriceB.length) and (matriceA[0].length == matriceB[0].length)
+        return true
     end
+    return false
 end
