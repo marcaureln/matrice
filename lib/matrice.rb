@@ -19,8 +19,7 @@ def creer_matrice()
     puts "Remplissez votre matrice : "
     for i in 1..lignes do # boucle qui part de 1 au nombre de lignes renseigné par l'utilisateur
         print "Ligne #{i} : " # affiche le numéro de la ligne
-        saisie = gets.chomp # récupère la ligne en chaine de caractère
-        ligne = saisie.split(" ") # divise la chaine de caractère en "substring" (sous-chaine) et retourne un tableau des différentes petites chaines
+        ligne = gets.chomp.split(" ")
         ligne.map!{ |x| x.to_i } # converti tous les éléments (string) du tableau en entier
         for j in 0..col-1 do # j représente l'index dans le tableau ligne = numero de la colonne dans la matrice
             matrice[i-1][j] = ligne[j] # a-1 car le tableau commence à l'index 0     
@@ -29,6 +28,7 @@ def creer_matrice()
     return matrice # la fonction retourne la matrice (c'est un Array ou tableau)
 end
 
+#TODO: gérer l'affichage des grands nombres 
 def afficher_matrice(matrice)
     # plus besoin d'entrer le nbre de lignes ou de colonnes en parametres
     lignes = matrice.length # le nbre de lignes correspond au nombre d'elts du tableau parent
@@ -45,20 +45,14 @@ def afficher_matrice(matrice)
 end
 
 def produit(matriceA, matriceB)
-    # initialisation de la matrice résultat
+    # la matrice résultante possède le même nombre de lignes que la matrice A et le même nombre de colonne que la matrice B
     matrice = Array.new(matriceA.length) {Array.new(matriceB[0].length, 0)}
-    # stocker le nombre de lignes et de colonnes pour pouvoir les utiliser plus facilement
-    lignes = matrice.length 
-    col = matrice[0].length
 
-    # V trop complexe à expliquer en commentaire
-    for lignesA in 0..matriceA.length-1 do 
-        for colonneB in 0..matriceB[0].length-1 do
-            somme = 0
+    for ligneA in 0..matriceA.length-1 do 
+        for colB in 0..matriceB[0].length-1 do
             for i in 0..matriceA[0].length-1 do 
-                somme += matriceA[lignesA][i]*matriceB[i][colonneB]  
+                matrice[ligneA][colB] += matriceA[ligneA][i]*matriceB[i][colB]  
             end
-            matrice[lignesA][colonneB] = somme
         end
     end
     
