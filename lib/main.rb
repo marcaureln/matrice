@@ -23,8 +23,7 @@ while true
 
     case choix 
     when 1 # choix de l'addition
-        matriceA = creer_matrice("A")
-        matriceB = creer_matrice("B")
+        matriceA, matriceB = creer_matrice("A"), creer_matrice("B")
 
         if addition?(matriceA, matriceB) # retourne vrai si les matrices sont compatibles
             matriceR = addition(matriceA, matriceB) 
@@ -34,8 +33,7 @@ while true
             puts "\nAddition impossible - Matrices incompatibles"
         end
     when 2 # choix de la multiplication de matrices
-        matriceA = creer_matrice("A")
-        matriceB = creer_matrice("B")
+        matriceA, matriceB = creer_matrice("A"), creer_matrice("B")
         
         if produit?(matriceA, matriceB)
             matriceR = produit(matriceA, matriceB)
@@ -45,31 +43,27 @@ while true
             puts "\nProduit impossible - Matrices incompatibles"
         end
     when 3 # choix de la multiplication de matrice avec un réel
-        matrice = creer_matrice()
-
         print "\nValeur de λ : "
         a = gets.chomp.to_i
         
-        matriceR = produit_scalaire(matrice, a)
+        matriceR = produit_scalaire(creer_matrice(), a)
         puts "\nRésultat λ*M"
         afficher_matrice(matriceR)
     when 4 # choix de la transposée
-        matrice = creer_matrice()
-        matriceT = transposee(matrice)
+        matriceT = transposee(creer_matrice())
         puts "\nTransposée de la Matrice"
         afficher_matrice(matriceT)
     when 5 # choix de la puissance d'une matrice
         matriceA = creer_matrice("A")
-
-        print "\nValeur de n : "
-        n = gets.chomp.to_i
         
         if carre?(matriceA) # test dans un premier temps si la multiplication est possible
+            print "\nValeur de n : "
+            n = gets.chomp.to_i
             matriceR = puissance(matriceA)
             puts "\nRésultat A^n"
             afficher_matrice(matriceR)            
         else # sinon on affiche que le calcul est impossible
-            puts "\nCalcul impossible"
+            puts "\nCalcul impossible - La matrice n'est pas carrée"
         end
     when 6, 7
         puts "En cours de développement..."
