@@ -79,13 +79,11 @@ def addition(matriceA, matriceB)
     return matrice
 end
 
-def puissance(matriceA, n)
-    matrice = matriceA
-    while n > 1
-        matrice = produit(matrice, matriceA)
-        n -= 1                
-    end
-    return matrice
+#TODO: M^0 = I 
+def puissance(matrice, n)
+    matriceN = matrice
+    (n-1).times { matriceN = produit(matriceN, matrice) }
+    return matriceN
 end
 
 def transposee(matrice)
