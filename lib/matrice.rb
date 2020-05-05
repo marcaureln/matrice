@@ -128,3 +128,7 @@ def addition?(matriceA, matriceB) # test si l'addition est possible
     end
     return false
 end
+
+def inversible?(matrice)
+    return (determinant(matrice) != 0 && carree?(matrice) == true)? true : false
+end
