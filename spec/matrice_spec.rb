@@ -28,6 +28,12 @@ describe 'matrice' do
             expect(puissance(matriceB, 2)).to eq [[1, 0, -1], [1, 3, 1], [-1, -2, 0]]
             expect(puissance(matriceB, 5)).to eq [[3, 8, 3], [5, 9, 1], [-5, -10, -2]]
         end
+
+        it 'Determinant' do
+            expect(determinant([[1]])).to eq 1
+            expect(determinant([[1, 3], [2, 5]])).to eq -1
+            expect(determinant([[2,5,3], [1,-2,-1], [1, 3, 4]])).to eq -20
+        end
     end
 
     context 'Verify possible operations' do
