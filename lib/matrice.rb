@@ -77,7 +77,7 @@ end
 
 def matrice_identite(n) # une matrice identité d'ordre n possède n lignes et n colonnes
     matrice = Array.new(n) {Array.new(n, 0)}
-    for i in 0..n-1 { matrice[i][i] = 1 }
+    (0...n).each { |i| matrice[i][i] = 1 }
     return matrice
 end
 
@@ -95,22 +95,20 @@ def transposee(matrice)
     return matriceT
 end
 
-def det(matrice)
-=begin (python)
-def determinant(matrix):
-    if (len(matrix) == 1):
-        return matrix[0][0]
-    if (len(matrix) == 2):
-        return matrix[0][0]*matrix[1][1]-matrix[0][1]*matrix[1][0]
+def determinant(matrice)
+    return matrice[0][0] if (matrice.length == 1)
+    return matrice[0][0]*matrice[1][1]-matrice[0][1]*matrice[1][0] if (matrice.length == 2)
     det = 0
-    for i in range(len(matrix)):
-        minor = []
-        for j in range(1, len(matrix)):
-            row = [matrix[j][k] for k in range(len(matrix) ) if k != i]
-            minor.append(row)
-        det += ((-1)**(i))*matrix[0][i]*determinant(minor)
+    for i in 0..matrice.length-1 do
+        com = []
+        for j in 1..matrice.length-1 do 
+            ligne = []
+            (0...matrice.length).each { |k| ligne.push(matrice[j][k]) if (k != i) }
+            com.push(ligne)
+        end
+        det += ((-1)**(i))*matrice[0][i]*determinant(com)
+    end
     return det
-=end
 end
 
 def produit?(matriceA, matriceB) # test si le produit A*B existe
