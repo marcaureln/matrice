@@ -26,9 +26,8 @@ while true
         matriceA, matriceB = creer_matrice("A"), creer_matrice("B")
 
         if addition?(matriceA, matriceB) # retourne vrai si les matrices sont compatibles
-            matriceR = addition(matriceA, matriceB) 
             puts "\nRésultat MatriceA+MatriceB"
-            afficher_matrice(matriceR)
+            afficher_matrice(addition(matriceA, matriceB))
         else # sinon on affiche que le calcul est impossible
             puts "\nAddition impossible - Matrices incompatibles"
         end
@@ -36,9 +35,8 @@ while true
         matriceA, matriceB = creer_matrice("A"), creer_matrice("B")
         
         if produit?(matriceA, matriceB)
-            matriceR = produit(matriceA, matriceB)
             puts "\nRésultat MatriceA*MatriceB"
-            afficher_matrice(matriceR)            
+            afficher_matrice(produit(matriceA, matriceB))            
         else
             puts "\nProduit impossible - Matrices incompatibles"
         end
@@ -46,9 +44,8 @@ while true
         print "\nValeur de λ : "
         a = gets.chomp.to_i
         
-        matriceR = produit_scalaire(creer_matrice(), a)
         puts "\nRésultat λ*M"
-        afficher_matrice(matriceR)
+        afficher_matrice(produit_scalaire(creer_matrice(), a))
     when 4 # choix de la transposée
         matriceT = transposee(creer_matrice())
         puts "\nTransposée de la Matrice"
@@ -56,16 +53,18 @@ while true
     when 5 # choix de la puissance d'une matrice
         matriceA = creer_matrice("A")
         
-        if carre?(matriceA) # test dans un premier temps si la multiplication est possible
+        if carree?(matriceA) # test dans un premier temps si la multiplication est possible
             print "\nValeur de n : "
             n = gets.chomp.to_i
-            matriceR = puissance(matriceA)
             puts "\nRésultat A^n"
-            afficher_matrice(matriceR)            
+            afficher_matrice(puissance(matriceA, n))
         else # sinon on affiche que le calcul est impossible
             puts "\nCalcul impossible - La matrice n'est pas carrée"
         end
-    when 6, 7
+    when 6
+        matriceA = creer_matrice("A")
+        puts carree?(matriceA)? "\ndet(A) = #{determinant(matriceA)}" : "\nCalcul impossible - La matrice n'est pas carrée"
+    when 7
         puts "En cours de développement..."
     when 0 # quand l'utilisateur décide de quitter le programme
         break
