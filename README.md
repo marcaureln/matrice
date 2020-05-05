@@ -6,7 +6,7 @@
 
 #### TODO
 
-- [!] afficher correctement les matrices
+- [ ] afficher correctement les matrices
 - [x] remplacer les blocs par des fonctions
 - [x] gérer les erreurs liées aux format des matrices (pour l'addition et le produit)
 - [x] ajouter des tests unitaires
