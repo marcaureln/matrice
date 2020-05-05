@@ -6,7 +6,7 @@ describe 'matrice' do
     matriceC = [[1, 4, -2], [2, 7, 3]]
     matriceD = [[5, -1, 6], [-2, 1, -3]]
 
-    context 'Basic operations' do 
+    context 'Operations' do 
         it 'Multiplication' do
             expect(produit(matriceA, matriceB)).to eq [[-1, 2, 1], [-1, -5, -3]]
         end
@@ -36,7 +36,7 @@ describe 'matrice' do
         end
     end
 
-    context 'Verify possible operations' do
+    context 'Does it defined ?' do
         it 'Multiplication?' do
             expect(produit?(matriceB, matriceA)).to eq false
         end
@@ -46,7 +46,7 @@ describe 'matrice' do
         end
     end
 
-    context 'Recognize matrix family or type' do 
+    context 'Matrix family' do 
         it 'Square?' do 
             expect(carree?(matriceA)).to eq false            
             expect(carree?(matriceB)).to eq true
